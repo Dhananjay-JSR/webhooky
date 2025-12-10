@@ -345,16 +345,18 @@ export default function WebhookView({ params }: { params: Promise<{ id: string }
                     )}
                   </button>
                 </div>
-                <div className="flex-1 overflow-auto p-4">
-                  <JsonViewer 
-                    data={
-                      viewMode === 'body' 
-                        ? selectedLog.body 
-                        : viewMode === 'headers' 
-                          ? selectedLog.headers 
-                          : selectedLog.query
-                    } 
-                  />
+                <div className="flex-1 overflow-auto p-4 max-w-full">
+                  <div className="max-w-full overflow-x-auto">
+                    <JsonViewer 
+                      data={
+                        viewMode === 'body' 
+                          ? selectedLog.body 
+                          : viewMode === 'headers' 
+                            ? selectedLog.headers 
+                            : selectedLog.query
+                      } 
+                    />
+                  </div>
                 </div>
               </div>
             </>
@@ -461,7 +463,7 @@ function JsonViewer({ data }: { data: unknown }) {
   };
 
   return (
-    <pre className="font-mono text-sm whitespace-pre leading-relaxed">
+    <pre className="font-mono text-sm whitespace-pre-wrap break-all leading-relaxed max-w-full">
       {renderValue(data)}
     </pre>
   );
