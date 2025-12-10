@@ -32,7 +32,7 @@ export default function WebhookView({ params }: { params: Promise<{ id: string }
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [viewMode, setViewMode] = useState<'body' | 'headers' | 'query'>('body');
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://webhooky.live';
   const webhookUrl = `${baseUrl}/hook/${id}`;
 
   const fetchLogs = useCallback(async () => {

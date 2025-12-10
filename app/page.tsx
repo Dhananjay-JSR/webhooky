@@ -8,7 +8,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://webhooky.live';
 
   const createEndpoint = async () => {
     setIsCreating(true);
@@ -49,7 +49,7 @@ export default function Home() {
             <span className="text-xl font-bold">Webhooky</span>
           </div>
           <a 
-            href="https://github.com" 
+            href="https://github.com/Dhananjay-JSR/webhooky" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
