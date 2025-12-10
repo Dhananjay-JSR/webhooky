@@ -79,8 +79,9 @@ async function handleWebhook(
     }
   }
   
-  // Get client IP
-  const ip = headers['x-forwarded-for'] || 
+  // Get client IP (Vercel-specific headers)
+  const ip = headers['x-vercel-forwarded-for']?.split(',')[0].trim() ||
+             headers['x-forwarded-for']?.split(',')[0].trim() ||
              headers['x-real-ip'] || 
              'unknown';
   
@@ -91,7 +92,7 @@ async function handleWebhook(
     headers,
     body,
     query,
-    ip: typeof ip === 'string' ? ip : ip.split(',')[0],
+    ip,
     timestamp: new Date(),
     contentType,
     size,
